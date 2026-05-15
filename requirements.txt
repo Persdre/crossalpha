@@ -1,0 +1,13 @@
+polars>=1.0
+pyarrow>=15.0
+numpy>=2.0
+h5py>=3.0
+requests>=2.0
+yfinance>=0.2
+pandas>=2.0
+lxml>=5.0
+openpyxl>=3.0
+python-dotenv>=1.0
+plotly>=6.5.0
+scikit-learn>=1.7.0
+nbformat>=4.2.0

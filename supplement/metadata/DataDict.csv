@@ -1,0 +1,31 @@
+id,name,name_in_source,source,freq,region,product,explanation
+0,open,Open,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nyse,Equity,Opening price of the bar
+1,high,High,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nyse,Equity,Highest price during the bar
+2,low,Low,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nyse,Equity,Lowest price during the bar
+3,close,Close,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nyse,Equity,Closing price of the bar
+4,volume,Volume,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nyse,Equity,Number of shares traded during the bar
+5,open,Open,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nasdaq,Equity,Opening price of the bar
+6,high,High,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nasdaq,Equity,Highest price during the bar
+7,low,Low,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nasdaq,Equity,Lowest price during the bar
+8,close,Close,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nasdaq,Equity,Closing price of the bar
+9,volume,Volume,open_source,1m/2m/5m/15m/30m/60m/90m/1h/1d/5d/1wk/1mo/3mo,us_nasdaq,Equity,Number of shares traded during the bar
+10,open,Open,yfinance,1d,us_russell_1000,Equity,Opening price of the bar
+11,high,High,yfinance,1d,us_russell_1000,Equity,Highest price during the bar
+12,low,Low,yfinance,1d,us_russell_1000,Equity,Lowest price during the bar
+13,close,Close,yfinance,1d,us_russell_1000,Equity,Closing price of the bar
+14,volume,Volume,yfinance,1d,us_russell_1000,Equity,Number of shares traded during the bar
+16,open,Open,yfinance,1d,jp_topix,Equity,Opening price of the bar
+17,high,High,yfinance,1d,jp_topix,Equity,Highest price during the bar
+18,low,Low,yfinance,1d,jp_topix,Equity,Lowest price during the bar
+19,close,Close,yfinance,1d,jp_topix,Equity,Closing price of the bar
+20,volume,Volume,yfinance,1d,jp_topix,Equity,Number of shares traded during the bar
+22,open,Open,yfinance,1d,jp_topix_500,Equity,Opening price of the bar
+23,high,High,yfinance,1d,jp_topix_500,Equity,Highest price during the bar
+24,low,Low,yfinance,1d,jp_topix_500,Equity,Lowest price during the bar
+25,close,Close,yfinance,1d,jp_topix_500,Equity,Closing price of the bar
+26,volume,Volume,yfinance,1d,jp_topix_500,Equity,Number of shares traded during the bar
+28,open,Open,yfinance,1d,tw_twse,Equity,Opening price of the bar
+29,high,High,yfinance,1d,tw_twse,Equity,Highest price during the bar
+30,low,Low,yfinance,1d,tw_twse,Equity,Lowest price during the bar
+31,close,Close,yfinance,1d,tw_twse,Equity,Closing price of the bar
+32,volume,Volume,yfinance,1d,tw_twse,Equity,Number of shares traded during the bar

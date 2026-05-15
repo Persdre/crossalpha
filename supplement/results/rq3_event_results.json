@@ -1,0 +1,144 @@
+[
+  {
+    "method": "emb_only",
+    "kind": "cross_market",
+    "raw": {
+      "label": "emb_only_raw",
+      "n_months": 130,
+      "mean_ic": 0.010190797025102331,
+      "std_ic": 0.08308715551479798,
+      "icir_annual": 0.4248786255284749,
+      "t_stat": 1.3984467584915292,
+      "hit_rate": 0.5923076923076923
+    },
+    "mild_neu": {
+      "label": "emb_only_mild_neu",
+      "n_months": 108,
+      "mean_ic": 0.013197096510192251,
+      "std_ic": 0.08898397483447826,
+      "icir_annual": 0.5137563636724888,
+      "t_stat": 1.5412690910174665,
+      "hit_rate": 0.5925925925925926
+    }
+  },
+  {
+    "method": "graph_boost_02",
+    "kind": "cross_market",
+    "raw": {
+      "label": "graph_boost_02_raw",
+      "n_months": 130,
+      "mean_ic": 0.01029320227754549,
+      "std_ic": 0.08385723283991584,
+      "icir_annual": 0.4252071935482761,
+      "t_stat": 1.3995282082388856,
+      "hit_rate": 0.5846153846153846
+    },
+    "mild_neu": {
+      "label": "graph_boost_02_mild_neu",
+      "n_months": 108,
+      "mean_ic": 0.013061925370167586,
+      "std_ic": 0.09020694382957396,
+      "icir_annual": 0.5016003741030415,
+      "t_stat": 1.5048011223091244,
+      "hit_rate": 0.5925925925925926
+    }
+  },
+  {
+    "method": "graph_mask",
+    "kind": "cross_market",
+    "raw": {
+      "label": "graph_mask_raw",
+      "n_months": 130,
+      "mean_ic": 0.011786896914119029,
+      "std_ic": 0.09402013143087035,
+      "icir_annual": 0.4342794252280271,
+      "t_stat": 1.4293885782893947,
+      "hit_rate": 0.5846153846153846
+    },
+    "mild_neu": {
+      "label": "graph_mask_mild_neu",
+      "n_months": 103,
+      "mean_ic": 0.00799834105918782,
+      "std_ic": 0.08284160699240516,
+      "icir_annual": 0.33445833787477475,
+      "t_stat": 0.9798735087039538,
+      "hit_rate": 0.5728155339805825
+    }
+  },
+  {
+    "method": "multi_attest_ge2",
+    "kind": "cross_market",
+    "raw": {
+      "label": "multi_attest_ge2_raw",
+      "n_months": 130,
+      "mean_ic": 0.01089081714743458,
+      "std_ic": 0.0911143083598455,
+      "icir_annual": 0.414061171617525,
+      "t_stat": 1.3628421588530246,
+      "hit_rate": 0.5769230769230769
+    },
+    "mild_neu": {
+      "label": "multi_attest_ge2_mild_neu",
+      "n_months": 106,
+      "mean_ic": 0.011825797673710208,
+      "std_ic": 0.09273690957665918,
+      "icir_annual": 0.4417417510331015,
+      "t_stat": 1.3128973083798867,
+      "hit_rate": 0.5471698113207547
+    }
+  },
+  {
+    "method": "domestic_own_mom",
+    "kind": "single_market",
+    "raw": {
+      "label": "domestic_own_mom_raw",
+      "n_months": 130,
+      "mean_ic": -0.015850661497509553,
+      "std_ic": 0.19544645529070645,
+      "icir_annual": -0.28093782521076793,
+      "t_stat": -0.9246795847048984,
+      "hit_rate": 0.49230769230769234
+    },
+    "mild_neu": {
+      "label": "domestic_own_mom_mild_neu",
+      "n_months": 106,
+      "mean_ic": -0.002595518337019991,
+      "std_ic": 0.1580029200011576,
+      "icir_annual": -0.056904893044538274,
+      "t_stat": -0.16912660109010452,
+      "hit_rate": 0.5566037735849056
+    }
+  },
+  {
+    "method": "domestic_sec_rel_mom",
+    "kind": "single_market",
+    "raw": {
+      "label": "domestic_sec_rel_mom_raw",
+      "n_months": 118,
+      "mean_ic": -0.012668886977128042,
+      "std_ic": 0.1620654667550085,
+      "icir_annual": -0.2707937274867389,
+      "t_stat": -0.8491589297577113,
+      "hit_rate": 0.4915254237288136
+    },
+    "mild_neu": {
+      "label": "domestic_sec_rel_mom_mild_neu",
+      "n_months": 101,
+      "mean_ic": -0.012832366901013203,
+      "std_ic": 0.1556542572798112,
+      "icir_annual": -0.2855856542871811,
+      "t_stat": -0.828526591777957,
+      "hit_rate": 0.49504950495049505
+    }
+  },
+  {
+    "method": "placebo_avg_10",
+    "kind": "placebo",
+    "mild_neu": {
+      "label": "placebo_mild_neu",
+      "mean_ic": 0.008383135078697198,
+      "icir_annual": 0.3033500725470877,
+      "icir_std": 0.25988667754009753
+    }
+  }
+]

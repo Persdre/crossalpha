@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ar-scraper"
+version = "0.3.0"
+description = "Annual Report Scraper for US, Japan, Taiwan, Korea, Hong Kong, and China A-share markets"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = [
+    "aiohttp>=3.9",
+    "requests>=2.31",
+    "polars>=0.20",
+    "beautifulsoup4>=4.12",
+    "click>=8.1",
+]
+
+[project.optional-dependencies]
+us = ["weasyprint>=60.0"]
+dev = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.1",
+]
+
+[project.scripts]
+ar-scraper = "ar_scraper.cli:main"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "integration: marks tests as integration tests (may be slow or require network)",
+]

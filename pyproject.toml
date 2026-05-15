@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "crossalpha"
+version = "0.1.0"
+description = "Multi-Agent LLM Framework for Cross-Market Factor Discovery"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40.0",
+    "polars>=1.0",
+    "numpy>=2.0",
+    "h5py>=3.0",
+    "numba>=0.60",
+    "scikit-learn>=1.7",
+    "plotly>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.24"]
+
+[project.scripts]
+crossalpha = "crossalpha.cli:main"
