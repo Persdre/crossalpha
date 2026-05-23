@@ -35,7 +35,6 @@ PARSED_TW_DIR = PROJECT_ROOT / "parsed_reports" / "securities_reports_tw"
 PARSED_KR_DIR = PROJECT_ROOT / "parsed_reports" / "securities_reports_kr"
 PARSED_HK_DIR = PROJECT_ROOT / "parsed_reports" / "securities_reports_hk"
 PARSED_VN_DIR = PROJECT_ROOT / "parsed_reports" / "securities_reports_vn"
-PARSED_CN_DIR = PROJECT_ROOT / "parsed_reports" / "securities_reports_cn"
 SYMBOL_DICT_PATH = PROJECT_ROOT / "docs" / "SymbolDict.csv"
 OUTPUT_DIR = PROJECT_ROOT / "embeddings" / "raw"
 
@@ -59,7 +58,7 @@ CATEGORIES = [
 ]
 
 # Index regions to generate filtered files for
-INDEX_REGIONS = ["jp_topix", "jp_topix_500", "us_russell_1000", "tw_twse", "kr_kospi", "hk_hsci", "hk_main", "vn_hose", "cn_csi300", "cn_star", "cn_chinext"]
+INDEX_REGIONS = ["jp_topix", "jp_topix_500", "us_russell_1000", "tw_twse", "kr_kospi", "hk_hsci", "hk_main", "vn_hose"]
 
 
 class ParsedReport(TypedDict):
@@ -179,23 +178,6 @@ def load_parsed_reports() -> pl.DataFrame:
         except (json.JSONDecodeError, KeyError) as e:
             print(f"  Warning: Failed to load {json_path.name}: {e}")
 
-    # Load CN Annual reports
-    for json_path in PARSED_CN_DIR.glob("*.json"):
-        try:
-            with open(json_path, encoding="utf-8") as f:
-                data = json.load(f)
-            record = {
-                "symbol": data.get("symbol", ""),
-                "source": "cn_annual",
-                "filing_date": data.get("filing_date", ""),
-            }
-            categories = data.get("categories", {})
-            for cat in CATEGORIES:
-                record[cat] = categories.get(cat, "")
-            records.append(record)
-        except (json.JSONDecodeError, KeyError) as e:
-            print(f"  Warning: Failed to load {json_path.name}: {e}")
-
     if not records:
         raise ValueError("No parsed reports found")
 
@@ -216,7 +198,6 @@ def load_parsed_reports() -> pl.DataFrame:
     print(f"  KR Annual: {df.filter(pl.col('source') == 'kr_annual').height}")
     print(f"  HK Annual: {df.filter(pl.col('source') == 'hk_annual').height}")
     print(f"  VN Annual: {df.filter(pl.col('source') == 'vn_annual').height}")
-    print(f"  CN Annual: {df.filter(pl.col('source') == 'cn_annual').height}")
 
     return df
 

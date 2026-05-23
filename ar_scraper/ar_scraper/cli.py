@@ -21,7 +21,7 @@ from ar_scraper.utils import (
 @click.option(
     "--universe",
     type=click.Choice(list(UNIVERSES.keys())),
-    help="Universe to scrape (e.g., us_russell_1000, jp_topix, cn_csi300)",
+    help="Universe to scrape (e.g., us_russell_1000, jp_topix, hk_main)",
 )
 @click.option(
     "--symbols",
@@ -37,7 +37,7 @@ from ar_scraper.utils import (
     "--year",
     type=int,
     default=datetime.now().year,
-    help="Year to fetch (fiscal year for HK/CN, filing year for others; default: current year)",
+    help="Year to fetch (fiscal year for HK, filing year for others; default: current year)",
 )
 @click.option(
     "--output-dir",
@@ -67,7 +67,7 @@ def main(
     quiet: bool,
     pdf_workers: int,
 ) -> None:
-    """Annual Report Scraper - Download annual reports from US, Japan, Taiwan, Korea, Hong Kong, China.
+    """Annual Report Scraper - Download annual reports from US, Japan, Taiwan, Korea, Hong Kong.
 
     Examples:
 
@@ -220,24 +220,6 @@ def main(
             symbols=grouped["hk"],
             output_dir=output_dir,
             mapper=mapper,
-            year=year,
-            skip_existing=skip_existing,
-            verbose=verbose,
-        )
-        total_successful += len(result.successful)
-        total_errors += len(result.errors)
-
-    if "cn" in grouped:
-        from ar_scraper.cn_scraper import scrape_cn
-
-        if verbose:
-            click.echo("=" * 50)
-            click.echo("China CNINFO")
-            click.echo("=" * 50)
-
-        result = scrape_cn(
-            symbols=grouped["cn"],
-            output_dir=output_dir,
             year=year,
             skip_existing=skip_existing,
             verbose=verbose,

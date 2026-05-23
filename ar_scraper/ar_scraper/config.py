@@ -11,9 +11,6 @@ UNIVERSES: dict[str, str] = {
     "kr_kospi": "kr_kospi",
     "hk_hsci": "hk_hsci",
     "hk_main": "hk_main",
-    "cn_csi300": "cn_csi300",
-    "cn_star": "cn_star",
-    "cn_chinext": "cn_chinext",
 }
 
 # Symbol suffix -> region code
@@ -22,8 +19,6 @@ SYMBOL_SUFFIXES: dict[str, str] = {
     ".TW": "tw",
     ".KS": "kr",
     ".HK": "hk",
-    ".SS": "cn",
-    ".SZ": "cn",
 }
 
 # Rate limits (preserved from original scrapers)
@@ -77,27 +72,6 @@ DART_HEADERS = {
     ),
 }
 
-# China A-share specific (CNINFO 巨潮资讯网)
-CNINFO_SEARCH_URL = "https://www.cninfo.com.cn/new/hisAnnouncement/query"
-CNINFO_FULLTEXT_URL = "https://www.cninfo.com.cn/new/fulltextSearch/full"
-CNINFO_STATIC_URL = "https://static.cninfo.com.cn"
-CN_RATE_LIMIT = 1.0  # seconds between requests
-CN_BATCH_SIZE = 10
-CN_BATCH_PAUSE = 5  # seconds
-CNINFO_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    ),
-    "Accept": "application/json, text/javascript, */*; q=0.01",
-    "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "X-Requested-With": "XMLHttpRequest",
-    "Referer": "https://www.cninfo.com.cn/new/disclosure",
-    "Origin": "https://www.cninfo.com.cn",
-}
-
 # Hong Kong-specific (HKEXnews)
 HKEX_SEARCH_URL = "https://www1.hkexnews.hk/search/titleSearchServlet.do"
 HKEX_STOCK_LIST_URL = "https://www1.hkexnews.hk/ncms/script/eds/activestock_sehk_e.json"
@@ -126,7 +100,7 @@ def detect_region_from_symbol(symbol: str) -> str:
         symbol: Stock symbol (e.g., "AAPL", "7974.T", "2330.TW")
 
     Returns:
-        Region code: "us", "jp", "tw", "kr", "hk", or "cn"
+        Region code: "us", "jp", "tw", "kr", or "hk"
     """
     symbol_upper = symbol.upper()
     for suffix, region in SYMBOL_SUFFIXES.items():

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Parse annual reports using Claude Haiku API.
 
-Universal parser that works for all markets (US, TW, KR, HK, CN).
+Universal parser that works across markets (US, TW, KR, HK).
 Uses the same 10-category extraction as the existing OpenAI-based parsers,
 but routes through Anthropic's Claude API instead.
 
@@ -12,11 +12,11 @@ Usage:
         --output-dir /path/to/output \
         --market us
 
-    # Parse CN reports with page filtering
+    # Parse TW reports with page filtering
     python scripts/parse_reports_claude.py \
-        --input-dir ar-scraper/reports/cn_star_fy2022 \
-        --output-dir parsed_reports/cn_star_fy2022 \
-        --market cn
+        --input-dir /path/to/tw_pdfs \
+        --output-dir /path/to/output \
+        --market tw
 """
 
 from __future__ import annotations
@@ -79,32 +79,6 @@ Categories to extract:
 
 Respond ONLY with a valid JSON object containing these exact keys. No markdown, no explanation. All values must be in English."""
 
-# ---------------------------------------------------------------------------
-# CN page filtering (reused from parse_cn.py)
-# ---------------------------------------------------------------------------
-
-CN_RELEVANT = re.compile(
-    r"公司概况|公司简介|主营业务|业务概要|经营情况|管理层讨论"
-    r"|董事长致辞|总裁致辞|业务回顾|行业分析|市场分析"
-    r"|产品与服务|研发|研究与开发|核心技术|核心竞争力"
-    r"|经营模式|商业模式|收入构成|营业收入|主要客户"
-    r"|供应链|产业链|竞争格局|行业地位|发展战略"
-)
-
-CN_IRRELEVANT = re.compile(
-    r"独立审计报告|审计报告|合并资产负债表|合并利润表"
-    r"|财务报表附注|公司治理|股东大会|监事会报告"
-    r"|董事会决议|关联交易|股权激励|员工持股"
-    r"|变更登记|备查文件|公司章程|释义"
-    r"|Independent Auditor|Consolidated Statement"
-    r"|Notes to.*Financial|Corporate Governance",
-    re.IGNORECASE,
-)
-
-CN_FINANCIAL_ZONE = re.compile(
-    r"独立审计报告|审计报告|Independent Auditor", re.IGNORECASE
-)
-
 # TW page filtering
 TW_RELEVANT = re.compile(
     r"公司簡介|公司概況|營運概況|業務內容|主要產品"
@@ -130,30 +104,6 @@ KR_IRRELEVANT_SECTIONS = {
     "재무제표", "감사보고서", "이사회", "주주총회", "임원",
     "주식", "배당", "기타", "재무에 관한 사항",
 }
-
-
-def filter_pages_cn(doc: fitz.Document, report_name: str) -> str:
-    """Filter CN annual report pages."""
-    page_texts = [page.get_text() for page in doc]
-    in_financial_zone = False
-    kept = []
-
-    for i, text in enumerate(page_texts):
-        if i < 6:
-            kept.append(text)
-            continue
-        if CN_FINANCIAL_ZONE.search(text):
-            in_financial_zone = True
-        if in_financial_zone:
-            continue
-        if CN_IRRELEVANT.search(text):
-            continue
-        if CN_RELEVANT.search(text) or len(text) > 500:
-            kept.append(text)
-
-    if len(kept) < max(8, len(page_texts) * 0.15):
-        return "\n".join(page_texts)
-    return "\n".join(kept)
 
 
 def filter_pages_tw(doc: fitz.Document, report_name: str) -> str:
@@ -205,9 +155,7 @@ def extract_text(file_path: Path, market: str) -> str:
         text = extract_kr_sections(file_path)
     else:
         doc = fitz.open(str(file_path))
-        if market == "cn":
-            text = filter_pages_cn(doc, name)
-        elif market == "tw":
+        if market == "tw":
             text = filter_pages_tw(doc, name)
         else:
             text = "\n".join(page.get_text() for page in doc)
@@ -387,7 +335,7 @@ def main():
     parser.add_argument("--input-dir", type=str, required=True)
     parser.add_argument("--output-dir", type=str, required=True)
     parser.add_argument("--market", type=str, required=True,
-                        choices=["us", "tw", "kr", "hk", "cn"],
+                        choices=["us", "tw", "kr", "hk"],
                         help="Market determines page filtering strategy")
     parser.add_argument("--workers", type=int, default=DEFAULT_WORKERS)
     parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)

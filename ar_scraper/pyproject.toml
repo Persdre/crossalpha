@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ar-scraper"
 version = "0.3.0"
-description = "Annual Report Scraper for US, Japan, Taiwan, Korea, Hong Kong, and China A-share markets"
+description = "Annual Report Scraper for US, Japan, Taiwan, Korea, and Hong Kong markets"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"

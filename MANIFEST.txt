@@ -8,7 +8,6 @@ ar_scraper/README.md
 ar_scraper/ar_scraper/__init__.py
 ar_scraper/ar_scraper/base.py
 ar_scraper/ar_scraper/cli.py
-ar_scraper/ar_scraper/cn_scraper.py
 ar_scraper/ar_scraper/config.py
 ar_scraper/ar_scraper/hk_scraper.py
 ar_scraper/ar_scraper/jp_edinet_scraper.py

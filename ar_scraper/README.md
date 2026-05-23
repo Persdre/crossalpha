@@ -1,11 +1,11 @@
 # ar-scraper
 
-Annual Report Scraper for US, Japan, Taiwan, Korea, Hong Kong, and China A-share markets.
+Annual Report Scraper for US, Japan, Taiwan, Korea, and Hong Kong markets.
 
 ## Installation
 
 ```bash
-# Base installation (Japan, Taiwan, Korea, Hong Kong, China support)
+# Base installation (Japan, Taiwan, Korea, Hong Kong support)
 pip install ar-scraper
 
 # With US support (requires WeasyPrint)
@@ -21,12 +21,9 @@ ar-scraper --universe jp_topix --year 2024
 ar-scraper --universe tw_twse --year 2024
 ar-scraper --universe kr_kospi --year 2024
 ar-scraper --universe hk_hsci --year 2024
-ar-scraper --universe cn_csi300 --year 2024
-ar-scraper --universe cn_star --year 2024
-ar-scraper --universe cn_chinext --year 2024
 
 # By symbols (auto-detects region)
-ar-scraper --symbols AAPL,MSFT,7974.T,2330.TW,005930.KS,0700.HK,600519.SS --year 2024
+ar-scraper --symbols AAPL,MSFT,7974.T,2330.TW,005930.KS,0700.HK --year 2024
 
 # From file
 ar-scraper --symbols-file symbols.txt --year 2024
@@ -46,9 +43,6 @@ ar-scraper --universe us_russell_1000 --year 2024 --quiet     # Minimal output
 - `tw_twse` - Taiwan TWSE (MOPS)
 - `kr_kospi` - Korea KOSPI (DART) — requires `DART_API_KEY` env var
 - `hk_hsci` - Hong Kong HSCI (HKEXnews)
-- `cn_csi300` - China CSI 300 (CNINFO)
-- `cn_star` - China STAR / 科创板 (CNINFO)
-- `cn_chinext` - China ChiNext / 创业板 (CNINFO)
 
 ## Output
 
@@ -61,7 +55,6 @@ reports/
   2330.TW_AnnualReport_2024-05-18.pdf
   005930.KS_BusinessReport_2024-03-15.zip
   0700.HK_AnnualReport_2024-04-18.pdf
-  600519.SS_AnnualReport_2025-04-02.pdf
   metadata.json
   errors.json
 ```
