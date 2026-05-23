@@ -1,0 +1,18 @@
+{
+  "symbol": "4480.T",
+  "report_type": "SecReport",
+  "filing_date": "2025-03-25",
+  "source_file": "4480.T_SecReport_2025-03-25.pdf",
+  "categories": {
+    "main_business_segments": "Medley, Inc. operates three main business segments: (1) Human Resources Platform, offering recruitment and training solutions for the healthcare sector; (2) Medical Platform, providing SaaS-based systems for medical institutions, pharmacies, and patients; and (3) New Development Services, including care facility search and factoring services for healthcare providers.",
+    "core_technologies_production_methods": "The company leverages internet technologies and cloud-based SaaS platforms to deliver recruitment systems, electronic medical records, online medical consultation, pharmacy support, and patient engagement tools. Their products emphasize automation, direct matching, and integration across healthcare workflows, with continuous development of proprietary algorithms and system enhancements.",
+    "primary_customers_markets": "Medley primarily serves medical institutions (hospitals, clinics, pharmacies), care and welfare facilities, and healthcare professionals seeking employment or training. Its end markets are the Japanese healthcare and welfare sectors, with growing activities in the U.S. for recruitment services.",
+    "geographic_coverage": "The company’s operations are predominantly in Japan, covering the entire country’s healthcare and welfare sectors. It has initiated overseas expansion, particularly in the United States, for its recruitment platform business.",
+    "supply_chain_position": "Medley operates downstream in the healthcare supply chain, directly interfacing with healthcare providers, care facilities, pharmacies, and end-users (patients and job seekers) through digital platforms and services.",
+    "strategic_focus_rd_direction": "Strategically, Medley focuses on maximizing long-term free cash flow through customer base expansion and ARPU improvement, investing in product lineup enhancement, and leveraging M&A for growth. R&D is centered on new SaaS solutions for healthcare, system stability, and digital transformation, with a particular emphasis on cloud migration and data utilization.",
+    "revenue_model": "Revenue is generated primarily through performance-based and pay-per-view recruitment fees, SaaS subscription fees from healthcare institutions, and service fees from new business lines such as factoring and care facility referrals. The company does not rely on advertising or licensing as core revenue streams.",
+    "key_competitors_industry_positioning": "Key competitors include other healthcare-focused recruitment agencies and medical IT vendors. Medley differentiates itself through a broad customer base, low-cost direct recruitment models, and integrated SaaS offerings, holding a leading position in healthcare recruitment and a growing share in cloud-based medical systems.",
+    "financial_scale_growth_profile": "In FY2024, Medley reported consolidated sales of 29.3 billion yen (up 42.7% YoY), with net profit attributable to shareholders of 2.8 billion yen and 1,487 employees. The company has demonstrated rapid, sustained growth, driven by both organic expansion and acquisitions, and targets 100 billion yen in sales by 2029.",
+    "value_proposition_product_differentiation": "Medley’s value proposition lies in solving critical healthcare sector challenges—workforce shortages, operational inefficiencies, and patient access—through low-cost, scalable digital platforms. Its direct matching recruitment model, comprehensive SaaS suite, and large, multi-segment customer base provide strong differentiation and network effects."
+  }
+}

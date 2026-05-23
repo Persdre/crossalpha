@@ -1,0 +1,18 @@
+{
+  "symbol": "2405.TW",
+  "report_type": "AnnualReport",
+  "filing_date": "2025-05-08",
+  "source_file": "2405.TW_AnnualReport_2025-05-08.pdf",
+  "categories": {
+    "main_business_segments": "The company primarily operates in the design, manufacturing, and sales of industrial and embedded computing products including All-in-One PCs, Panel PCs, Medical PCs, KIOSKs, IoT devices, AI-enabled PCs, Box PCs, and AIoT solutions. It also engages in AI computing platforms and edge computing solutions tailored for industrial and medical applications.",
+    "core_technologies_production_methods": "Core technologies include AI computing with integrated NPU, GPU, and CPU architectures, Intel and AMD processors, NVIDIA Jetson AI platforms, and ruggedized designs compliant with MIL-STD-810G and EN50155 standards. Production emphasizes fanless designs, IP54/IP65 rated enclosures, and integration of AIoT and edge computing capabilities for industrial and medical environments.",
+    "primary_customers_markets": "The company serves industrial automation, medical device manufacturers, IoT solution providers, and AI application developers. Its products target markets requiring ruggedized and AI-enabled computing solutions, including healthcare, manufacturing, transportation, and smart retail sectors.",
+    "geographic_coverage": "Operations and sales cover Taiwan as the base, with significant presence in North America, Europe, and Asia-Pacific regions. The company maintains subsidiaries and offices in Hong Kong, the United States, Germany, Japan, and the British Virgin Islands, supporting global distribution and service.",
+    "supply_chain_position": "The company operates primarily in the midstream segment of the supply chain, focusing on the design, assembly, and integration of computing hardware and AI platforms. It collaborates with upstream semiconductor suppliers and downstream system integrators and end-users.",
+    "strategic_focus_rd_direction": "Strategic priorities include advancing AI computing platforms, expanding AIoT and edge computing solutions, and enhancing ruggedized industrial PCs. R&D focuses on integrating AI accelerators (NPU), supporting next-generation Intel and AMD processors, and developing medical-grade computing devices compliant with international standards.",
+    "revenue_model": "Revenue is generated mainly through product sales of computing hardware and integrated AI solutions. The company also derives income from licensing technologies and providing customized system integration services for industrial and medical clients.",
+    "key_competitors_industry_positioning": "The company competes with global industrial PC manufacturers and AI computing solution providers such as Advantech, AAEON, and other embedded system vendors. It positions itself as a specialist in ruggedized, AI-enabled industrial and medical computing platforms with strong customization capabilities.",
+    "financial_scale_growth_profile": "The company reported revenues in the range of billions of NTD, with a stable growth trajectory supported by expanding AI and IoT product lines. It maintains a solid asset base and invests significantly in R&D to sustain innovation and market competitiveness.",
+    "value_proposition_product_differentiation": "The company emphasizes ruggedness, AI integration, and customization in its computing solutions, offering high-performance AIoT and edge computing platforms tailored for demanding industrial and medical applications. Its products comply with stringent international standards, providing reliability and advanced AI capabilities that differentiate it from competitors."
+  }
+}

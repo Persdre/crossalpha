@@ -149,7 +149,12 @@ crossalpha/
     │   ├── category_ablation_multi_target_12mo.json # schema ablation
     │   └── rq3_event_results.json               # RQ3 (event strategy)
     ├── metadata/                        # SymbolDict.csv, DataDict.csv
-    ├── standardized_reports/            # sample ten-category annual-report JSONs
+    ├── standardized_reports/            # ten-category JSON text, all 5 markets
+    │   ├── 10_k_filings/                #   US  (881)
+    │   ├── securities_reports/          #   JP  (1,523)
+    │   ├── securities_reports_tw/       #   TW  (1,040)
+    │   ├── securities_reports_kr/       #   KR  (612)
+    │   └── securities_reports_hk/       #   HK  (602)
     └── DATA_MANIFEST.md                 # full-release layout
 ```
 
@@ -211,9 +216,11 @@ re-running anything.
 
 ## Data Availability
 
-This anonymous review package ships **lightweight artifacts only**: result
-summaries, metadata dictionaries, and a sample of standardized annual-report
-JSONs for inspection. The full report corpus, PCA-whitened embedding matrices,
+This anonymous review package ships the **standardized ten-category JSON text
+for all five markets** (US, JP, TW, KR, HK; ~4,700 firm-filings under
+`supplement/standardized_reports/`), the result summaries, and the metadata
+dictionaries — enough to inspect the inputs and verify the reported numbers.
+The raw filing PDFs/HTML, PCA-whitened embedding matrices,
 directed similarity matrices, typed economic-linkage edges, and the complete
 daily OHLCV panel are large and will be released through public dataset hosting
 with an archival DOI after review. See `supplement/DATA_MANIFEST.md` for the

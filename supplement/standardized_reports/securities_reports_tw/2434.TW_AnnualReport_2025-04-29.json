@@ -1,0 +1,18 @@
+{
+  "symbol": "2434.TW",
+  "report_type": "AnnualReport",
+  "filing_date": "2025-04-29",
+  "source_file": "2434.TW_AnnualReport_2025-04-29.pdf",
+  "categories": {
+    "main_business_segments": "Mospec Semiconductor Corp. primarily engages in the manufacturing and sales of power transistors and diodes, including Schottky Barrier Diodes, Ultra Fast Recovery Rectifiers, Transient Voltage Suppressors, and Bridge Rectifiers. The company also develops customized power transistors and focuses on automotive electronics and consumer electronics markets.",
+    "core_technologies_production_methods": "The company utilizes vertical integration in semiconductor production, covering wafer grinding, polishing, epitaxial growth, diffusion, etching, metal deposition, and packaging/testing. It emphasizes advanced device design such as trench Power MOSFETs, SiC and GaN wide bandgap materials, and IGBT modules. Automation and high-density packaging technologies are key production methods.",
+    "primary_customers_markets": "Key customers include manufacturers in consumer electronics, automotive electronics, power supply, and industrial electronics sectors. Major end markets are in Asia, particularly China and Taiwan, with expanding focus on automotive, server, notebook, network communication, and mobile device applications.",
+    "geographic_coverage": "The company operates mainly in Taiwan with significant sales in Asia, especially the Chinese market. It also serves customers in North America and other regions, though Asia accounts for the majority of sales revenue (over 90%).",
+    "supply_chain_position": "Mospec operates as a vertically integrated semiconductor manufacturer covering upstream wafer processing through midstream device fabrication to downstream packaging and testing. It supplies semiconductor components to downstream electronics manufacturers and OEMs.",
+    "strategic_focus_rd_direction": "Strategic priorities include developing low voltage (30V-200V) Power MOSFETs with Splitgate structures for lower energy consumption, expanding SiC and GaN power device portfolios, advancing silicon-based IGBT and IGBT modules, and broadening TVS product lines. The company invests in automation to enhance production capacity and cost competitiveness.",
+    "revenue_model": "Revenue is generated primarily through product sales of semiconductor components such as diodes and transistors. The company also engages in OEM/ODM manufacturing and provides integrated sales and technical support services to customers.",
+    "key_competitors_industry_positioning": "Mospec competes in a mature and highly competitive semiconductor market with global players. It differentiates itself through vertical integration, specialized power semiconductor products, and certifications like ISO/TS16949 for automotive electronics. The company aims to avoid price competition by focusing on niche, high-value products.",
+    "financial_scale_growth_profile": "The company reported operating revenue of approximately NT$50.7 billion in 2024, a 20% decline from the previous year, with a turnaround to pre-tax profit due to investment gains. It maintains a stable capital structure with total assets around NT$729 billion and continues to invest in R&D and automation to support growth.",
+    "value_proposition_product_differentiation": "Mospec emphasizes high-quality, innovative power semiconductor devices with competitive cost structures enabled by vertical integration and automation. Its product differentiation lies in advanced device designs, wide bandgap material applications, and customized solutions for automotive and consumer electronics markets, supported by strong R&D capabilities."
+  }
+}
