@@ -1,16 +1,124 @@
-# CrossAlpha Anonymous Supplement
+# CrossAlpha
 
-This repository is an anonymized supplement for a double-blind ARR submission.
+This repository contains the code and lightweight data artifacts for the paper
+**"CrossAlpha: A Cross-Market Annual Report Dataset for Global Equity Factor Research."**
+It is the anonymized supplement for a double-blind submission.
 
-## What Is Included
+## Overview
 
-- `scripts/`: code for monthly baselines, cross-market matrices, category ablations, pooled source experiments, and event-spillover evaluation.
-- `scripts/backtesting/`, `scripts/kernels/`, `scripts/h5_data/`: shared evaluation utilities.
-- `ar_scraper/`: source code for the annual-report scraper toolkit. Downloaded report corpora are excluded.
-- `supplement/results/`: lightweight JSON outputs used by paper tables and figures.
-- `supplement/standardized_reports/`: compact ten-category annual-report JSON files in the data archive.
-- `supplement/metadata/`: symbol and data dictionaries.
-- `supplement/DATA_MANIFEST.md`: description of the full release layout.
+When a US firm's annual report describes its Asian suppliers, customers, and
+competitors, that disclosure can carry predictive information about firms in
+*other* markets. Existing financial-NLP resources offer little infrastructure
+for evaluating such cross-market firm links at scale.
+
+**CrossAlpha** is a public cross-market annual-report benchmark for firm-link
+reasoning and information-flow evaluation. It harmonizes filings from five
+regulatory systems and releases three aligned artifacts:
+
+- a **~19M-edge dense cross-market similarity graph** built from PCA-whitened
+  embeddings of an LLM-distilled ten-category business schema;
+- an **8,962-edge typed economic-linkage overlay** (plus 744 retriever-only
+  edges) on the US→Japan corridor;
+- **11 years of daily OHLCV data** with monthly and event-conditioned
+  evaluation harnesses.
+
+| | |
+|---|---|
+| Markets | US (Russell 1000), Japan (TOPIX 500), Taiwan (TWSE), Korea (KOSPI), Hong Kong (main board) |
+| Coverage | ~3,600 companies, ~10,700 firm-years |
+| Evaluation window | January 2015 – December 2025 (105 monthly rebalances) |
+| Source–target pairs | 25 ordered market pairs |
+| Event task | 25 systematic source stocks, 606 GPT-5 post-cutoff events |
+
+Across 25 source–target pairs, CrossAlpha surfaces two phenomena that
+single-market data cannot express: a **Cross-Market Gain**, where the best
+cross-market source beats the same-market baseline in 4 of 5 targets, and an
+**Information-Geography Asymmetry**, where the strongest source market is
+target-specific rather than uniformly US-led.
+
+## Key Findings
+
+The paper is organized around three research questions (RQ1–RQ3). Each script
+and result file below maps to one of them.
+
+1. **Cross-market text beats single-market and non-text peers (RQ1).** On the
+   US→Japan corridor, building peers from cross-market business-description text
+   reaches a rank ICIR of **0.39** (Sharpe 0.39, max drawdown −6.8%). Domestic
+   JP→JP text peers reach only 0.07 — at or below the random-peer floor — while
+   GICS sector matching reaches 0.18 and 252-day return correlation 0.11. Text
+   encodes the specific economic relationship between two firms before any
+   return is observed; sector labels are too coarse and return correlation is
+   backward-looking.
+
+2. **Information flows in one direction, from where the news breaks first
+   (RQ2).** Extending the single corridor to every ordered pair of the five
+   markets produces a 5×5 Information-Geography Matrix. No market is the
+   universal best source: the strongest source is target-specific, and the
+   matrix is strongly asymmetric (mean absolute directional gap 0.30 across the
+   ten pairs). The best cross-market source beats the domestic baseline in 4 of
+   5 targets, with a Cross-Market Gain of up to **+0.54 ICIR** (Korea). Taiwan
+   is the self-contained exception — a tightly linked local semiconductor
+   cluster whose most informative peers are domestic.
+
+3. **The graph supports event-driven daily trading, improved by an LLM agent
+   (RQ3).** After a large idiosyncratic move in a source firm, an equal-weight
+   basket of its top-K graph neighbours earns positive market-relative returns
+   at every basket size, reaching an annualized Sharpe near 1.4 under a strict
+   t+2 execution rule. Adding GPT-5-labelled co-movers as a grounded filter
+   improves every reported metric: for the headline top-20 basket, annualized
+   Sharpe rises from **0.81 to 1.50**.
+
+## How the Factor Is Built
+
+All monthly experiments share one standardized, monthly-rebalanced
+portfolio-sort pipeline and differ only in how peers are defined. For a target
+stock *i* in market *a* and a source market *b*, the cross-market factor
+aggregates the sector-relative returns of source-market peers, weighted by a
+sigmoid-transformed text-similarity rank (top-1% per row):
+
+```
+f_i(t) = sum_j ( alpha_ij * r_j(t) ) / sum_j ( alpha_ij ),   j in source market b
+```
+
+where `r_j(t)` is peer *j*'s L-month sector-relative cumulative return and
+`alpha_ij` is the similarity weight. At each month-end, target stocks are ranked
+by factor value, split into quintiles, and evaluated as a long–short (Q5−Q1) and
+a long-only (Q5) book at 2 bp one-way cost. Reported metrics are the monthly
+rank IC, its annualized information ratio (ICIR), and the long–short Sharpe and
+maximum drawdown. A strict 1-month execution lag is applied.
+
+## Repository Structure
+
+```text
+crossalpha/
+├── README.md                            # this file
+├── README_REVIEWER.md                   # short reviewer pointer
+├── requirements.txt
+├── pyproject.toml
+├── ANONYMIZATION_CHECKLIST.md
+├── scripts/
+│   ├── run_baselines_monthly.py             # RQ1: US→JP peer-definition comparison
+│   ├── run_paper_multi_market_monthly.py    # RQ2: raw US→target generalization
+│   ├── run_cross_vs_same_market_matrix.py   # RQ2: 5×5 Information-Geography Matrix
+│   ├── run_pooled_similarity_mild.py        # RQ2: best-single vs pooled sources
+│   ├── run_category_ablation_multi_target.py# ablation: ten-category schema
+│   ├── run_rq3_mild_rerun.py                # RQ3: event-driven daily evaluation
+│   ├── similarity_cache.py                  # similarity-matrix cache helper
+│   ├── kernels/                             # similarity, neutralization, ranking, returns
+│   ├── backtesting/                         # portfolio-sort engines, metrics, reports
+│   └── h5_data/                             # HDF5 panel loaders
+├── ar_scraper/                          # annual-report scraper toolkit (5 markets)
+└── supplement/
+    ├── results/                         # JSON outputs behind the paper tables/figures
+    │   ├── baselines_monthly_12mo.json          # RQ1 (Table: baselines)
+    │   ├── cross_vs_same_market_matrix_12mo.json# RQ2 (Information-Geography Matrix)
+    │   ├── pooled_similarity_12mo.json          # RQ2 (best-single vs pooled)
+    │   ├── category_ablation_multi_target_12mo.json # schema ablation
+    │   └── rq3_event_results.json               # RQ3 (event strategy)
+    ├── metadata/                        # SymbolDict.csv, DataDict.csv
+    ├── standardized_reports/            # sample ten-category annual-report JSONs
+    └── DATA_MANIFEST.md                 # full-release layout
+```
 
 ## Setup
 
@@ -20,24 +128,54 @@ Use Python 3.11 or newer.
 pip install -r requirements.txt
 ```
 
-Set paths before running experiments:
+The experiment scripts read the project and data roots from environment
+variables (no user-specific absolute paths are hard-coded):
 
 ```bash
 export CROSSALPHA_PROJECT_ROOT=/path/to/this/repo
 export CROSSALPHA_DATA_ROOT=/path/to/crossalpha-data
 ```
 
-## Reproduction Entry Points
+## Reproduction
+
+Each entry point corresponds to a table or figure in the paper:
 
 ```bash
+# RQ1 — US→JP peer-definition comparison (text vs GICS / return-corr / domestic)
 python scripts/run_baselines_monthly.py --lookback 12
-python scripts/run_cross_vs_same_market_matrix.py
-python scripts/run_category_ablation_multi_target.py
+
+# RQ2 — raw US→target generalization across the four Asian targets
 python scripts/run_paper_multi_market_monthly.py
+
+# RQ2 — 5×5 Information-Geography Matrix (per-source-target rank ICIR)
+python scripts/run_cross_vs_same_market_matrix.py
+
+# RQ2 — best single source vs pooled sources per target
+python scripts/run_pooled_similarity_mild.py
+
+# Ablation — ten-category business schema
+python scripts/run_category_ablation_multi_target.py
+
+# RQ3 — event-conditioned daily basket evaluation
+python scripts/run_rq3_mild_rerun.py
 ```
 
-The repository includes lightweight result files for inspection. The full report corpus, embeddings, similarity matrices, and market-data panel are large and will be released through public dataset hosting after review.
+The JSON files under `supplement/results/` are the exact outputs behind the
+reported numbers, so reviewers can verify the paper's tables and figures without
+re-running anything.
 
-## Double-Blind Note
+## Data Availability
 
-This repository intentionally contains no author names, affiliations, local machine paths, personal repository links, or project-account URLs.
+This anonymous review package ships **lightweight artifacts only**: result
+summaries, metadata dictionaries, and a sample of standardized annual-report
+JSONs for inspection. The full report corpus, PCA-whitened embedding matrices,
+directed similarity matrices, typed economic-linkage edges, and the complete
+daily OHLCV panel are large and will be released through public dataset hosting
+with an archival DOI after review. See `supplement/DATA_MANIFEST.md` for the
+full-release layout.
+
+## Anonymity Note
+
+This repository intentionally contains no author names, affiliations, local
+machine paths, personal repository links, or project-account URLs. See
+`ANONYMIZATION_CHECKLIST.md`.
