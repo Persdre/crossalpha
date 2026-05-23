@@ -87,6 +87,26 @@ a long-only (Q5) book at 2 bp one-way cost. Reported metrics are the monthly
 rank IC, its annualized information ratio (ICIR), and the long–short Sharpe and
 maximum drawdown. A strict 1-month execution lag is applied.
 
+## Dataset Construction Pipeline
+
+The repository ships the full pipeline so the construction process is auditable
+end to end, not just the final evaluation. The stages run in order; each
+produces an artifact consumed by the next.
+
+| # | Stage | Script | Output |
+|---|---|---|---|
+| 1 | **Schema extraction** | `scripts/parse_10k.py` (US 10-K/20-F), `scripts/parse_reports_claude.py` (all markets) | per-firm JSON under a fixed **ten-category business schema**, distilled by an LLM (the exact `SYSTEM_PROMPT` is in these files) |
+| 2 | **Embedding** | `scripts/generate_embeddings.py` | a 3072-d `text-embedding-3-large` vector per category per firm |
+| 3 | **PCA whitening** | `scripts/whiten_embeddings.py` | a shared 128-d whitened basis (`Cov(Z)=I`) fit jointly across all markets |
+| 4 | **Similarity graph** | `scripts/cache_similarity.py` | weighted cross-category cosine similarity → per-row percentile-rank matrices (the dense cross-market graph) |
+| 5 | **Typed edges** | `scripts/run_supply_chain_extraction.py` | LLM-extracted supplier/customer/competitor edges on the US→JP corridor |
+| 6 | **Factor** | `scripts/run_graph_monthly.py`, `scripts/run_us_ema_mr_to_jp_mvp.py` | the monthly cross-market peer-momentum factor (Eq. above) |
+| 7 | **RQ3 agent** | `scripts/run_agentic_eval.py`, `scripts/agentic_eval_helpers.py`, `scripts/agentic_retrieval_tools.py` | agent-weighted variants of the graph and their event-conditioned evaluation |
+
+Raw filings are collected with the `ar_scraper/` toolkit (one scraper per
+market). Stages 1, 5, and 7 call hosted LLM APIs and read `OPENAI_API_KEY` /
+`ANTHROPIC_API_KEY` from the environment; no keys are stored in the repo.
+
 ## Repository Structure
 
 ```text
@@ -97,6 +117,19 @@ crossalpha/
 ├── pyproject.toml
 ├── ANONYMIZATION_CHECKLIST.md
 ├── scripts/
+│   │  # — construction pipeline (stages 1–7) —
+│   ├── parse_10k.py                         # 1. US filings → ten-category schema (LLM)
+│   ├── parse_reports_claude.py              # 1. all-market parser → ten-category schema
+│   ├── generate_embeddings.py               # 2. category text → 3072-d embeddings
+│   ├── whiten_embeddings.py                 # 3. PCA whitening → shared 128-d basis
+│   ├── cache_similarity.py                  # 4. cosine → percentile-rank similarity graph
+│   ├── run_supply_chain_extraction.py       # 5. typed supplier/customer/competitor edges
+│   ├── run_graph_monthly.py                 # 6. cross-market peer-momentum factor
+│   ├── run_us_ema_mr_to_jp_mvp.py           # 6. US→JP factor variant
+│   ├── run_agentic_eval.py                  # 7. agent-weighted graph evaluation
+│   ├── agentic_eval_helpers.py              # 7. RQ3 agent eval helpers
+│   ├── agentic_retrieval_tools.py           # 7. RQ3 vector-search retrieval tool
+│   │  # — evaluation entry points (paper tables/figures) —
 │   ├── run_baselines_monthly.py             # RQ1: US→JP peer-definition comparison
 │   ├── run_paper_multi_market_monthly.py    # RQ2: raw US→target generalization
 │   ├── run_cross_vs_same_market_matrix.py   # RQ2: 5×5 Information-Geography Matrix
@@ -138,7 +171,19 @@ export CROSSALPHA_DATA_ROOT=/path/to/crossalpha-data
 
 ## Reproduction
 
-Each entry point corresponds to a table or figure in the paper:
+**Building the dataset from raw filings** (stages 1–5; needs the raw corpus and
+LLM API keys, released after review):
+
+```bash
+python scripts/parse_10k.py                  # 1. filings → ten-category schema
+python scripts/generate_embeddings.py        # 2. embeddings
+python scripts/whiten_embeddings.py          # 3. PCA whitening → 128-d basis
+python scripts/cache_similarity.py           # 4. similarity graph
+python scripts/run_supply_chain_extraction.py# 5. typed economic-linkage edges
+```
+
+**Evaluation** — each entry point corresponds to a table or figure in the
+paper and runs off the cached similarity / shipped results:
 
 ```bash
 # RQ1 — US→JP peer-definition comparison (text vs GICS / return-corr / domestic)

@@ -1,6 +1,9 @@
+.gitignore
 ANONYMIZATION_CHECKLIST.md
 MANIFEST.txt
 README.md
+README_REVIEWER.md
+RELEASE_PLAN.md
 ar_scraper/README.md
 ar_scraper/ar_scraper/__init__.py
 ar_scraper/ar_scraper/base.py
@@ -19,6 +22,8 @@ ar_scraper/ar_scraper/utils.py
 ar_scraper/pyproject.toml
 pyproject.toml
 requirements.txt
+scripts/agentic_eval_helpers.py
+scripts/agentic_retrieval_tools.py
 scripts/backtesting/__init__.py
 scripts/backtesting/adapters/__init__.py
 scripts/backtesting/adapters/array_builders.py
@@ -63,6 +68,9 @@ scripts/backtesting/structures.py
 scripts/backtesting/utils/__init__.py
 scripts/backtesting/utils/formatting.py
 scripts/backtesting/utils/validation.py
+scripts/cache_similarity.py
+scripts/daily_pooled_pipeline.py
+scripts/generate_embeddings.py
 scripts/h5_data/__init__.py
 scripts/h5_data/h5_utils.py
 scripts/kernels/__init__.py
@@ -73,10 +81,17 @@ scripts/kernels/return_correlation.py
 scripts/kernels/returns.py
 scripts/kernels/similarity.py
 scripts/kernels/weighting.py
+scripts/parse_10k.py
+scripts/parse_reports_claude.py
+scripts/run_agentic_eval.py
 scripts/run_baselines_monthly.py
 scripts/run_category_ablation_multi_target.py
 scripts/run_cross_vs_same_market_matrix.py
+scripts/run_graph_monthly.py
 scripts/run_paper_multi_market_monthly.py
 scripts/run_pooled_similarity_mild.py
 scripts/run_rq3_mild_rerun.py
+scripts/run_supply_chain_extraction.py
+scripts/run_us_ema_mr_to_jp_mvp.py
 scripts/similarity_cache.py
+scripts/whiten_embeddings.py
