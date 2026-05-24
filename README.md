@@ -6,6 +6,13 @@ It is the anonymized supplement for a double-blind submission.
 
 ## Overview
 
+![CrossAlpha Overview](figures/crossalpha_overview.png)
+
+*CrossAlpha standardises annual reports from multiple equity markets, constructs
+cross-market peer-similarity graphs from the resulting firm-level text
+representations, and aligns the graph with price data for return-prediction
+benchmarks.*
+
 When a US firm's annual report describes its Asian suppliers, customers, and
 competitors, that disclosure can carry predictive information about firms in
 *other* markets. Existing financial-NLP resources offer little infrastructure
@@ -29,44 +36,6 @@ regulatory systems and releases three aligned artifacts:
 | Evaluation window | January 2015 – December 2025 (105 monthly rebalances) |
 | Source–target pairs | 25 ordered market pairs |
 | Event task | 25 systematic source stocks, 606 GPT-5 post-cutoff events |
-
-Across 25 source–target pairs, CrossAlpha surfaces two phenomena that
-single-market data cannot express: a **Cross-Market Gain**, where the best
-cross-market source beats the same-market baseline in 4 of 5 targets, and an
-**Information-Geography Asymmetry**, where the strongest source market is
-target-specific rather than uniformly US-led.
-
-## Key Findings
-
-The paper is organized around three research questions (RQ1–RQ3). Each script
-and result file below maps to one of them.
-
-1. **Cross-market text beats single-market and non-text peers (RQ1).** On the
-   US→Japan corridor, building peers from cross-market business-description text
-   reaches a rank ICIR of **0.39** (Sharpe 0.39, max drawdown −6.8%). Domestic
-   JP→JP text peers reach only 0.07 — at or below the random-peer floor — while
-   GICS sector matching reaches 0.18 and 252-day return correlation 0.11. Text
-   encodes the specific economic relationship between two firms before any
-   return is observed; sector labels are too coarse and return correlation is
-   backward-looking.
-
-2. **Information flows in one direction, from where the news breaks first
-   (RQ2).** Extending the single corridor to every ordered pair of the five
-   markets produces a 5×5 Information-Geography Matrix. No market is the
-   universal best source: the strongest source is target-specific, and the
-   matrix is strongly asymmetric (mean absolute directional gap 0.30 across the
-   ten pairs). The best cross-market source beats the domestic baseline in 4 of
-   5 targets, with a Cross-Market Gain of up to **+0.54 ICIR** (Korea). Taiwan
-   is the self-contained exception — a tightly linked local semiconductor
-   cluster whose most informative peers are domestic.
-
-3. **The graph supports event-driven daily trading, improved by an LLM agent
-   (RQ3).** After a large idiosyncratic move in a source firm, an equal-weight
-   basket of its top-K graph neighbours earns positive market-relative returns
-   at every basket size, reaching an annualized Sharpe near 1.4 under a strict
-   t+2 execution rule. Adding GPT-5-labelled co-movers as a grounded filter
-   improves every reported metric: for the headline top-20 basket, annualized
-   Sharpe rises from **0.81 to 1.50**.
 
 ## How the Factor Is Built
 
