@@ -1,0 +1,18 @@
+{
+  "symbol": "NI",
+  "form_type": "10-K",
+  "filing_date": "2022-02-23",
+  "source_file": "NI_10-K_2022-02-23.pdf",
+  "categories": {
+    "main_business_segments": "NiSource operates two primary business segments: Gas Distribution Operations and Electric Operations. Gas Distribution serves approximately 3.2 million customers in six states, while Electric Operations, through NIPSCO, provides electricity to about 483,000 customers in northern Indiana.",
+    "core_technologies_production_methods": "The company relies on extensive natural gas distribution infrastructure (over 54,600 miles of pipeline) and electric generation assets, including coal, natural gas, hydro, and increasingly, renewable sources such as wind and solar. NiSource is transitioning its electric generation portfolio from coal to renewables, utilizing both owned facilities and power purchase agreements (PPAs).",
+    "primary_customers_markets": "NiSource primarily serves residential, commercial, and industrial customers in the regulated utility sector. Its customer base is broadly diversified, with no single customer accounting for a significant portion of revenues, and includes both gas and electric utility consumers.",
+    "geographic_coverage": "The company operates in six U.S. states: Indiana, Ohio, Pennsylvania, Virginia, Kentucky, and Maryland. Its electric operations are concentrated in northern Indiana, while gas distribution covers all six states.",
+    "supply_chain_position": "NiSource operates as a downstream utility, delivering natural gas and electricity directly to end customers. It does not produce natural gas or coal but purchases these commodities for distribution and generation.",
+    "strategic_focus_rd_direction": "Strategic priorities include infrastructure modernization, safety enhancements, customer service improvements, and a transition to lower-carbon energy sources. The company is investing in renewable energy, advanced leak detection, and grid modernization, and has set a goal to reduce Scope 1 greenhouse gas emissions by 90% by 2030 (from 2005 levels).",
+    "revenue_model": "NiSource generates revenue primarily through regulated utility rates for the delivery of natural gas and electricity. Revenues are approved by state and federal regulators and include mechanisms for cost recovery and adjustments for commodity price fluctuations.",
+    "key_competitors_industry_positioning": "In gas distribution, NiSource competes with other investor-owned, municipal, and cooperative utilities, as well as alternative fuel providers. In electric operations, competition is limited due to exclusive service territories, but there is some non-utility competition from self-generation and distributed energy resources. NiSource is a leading fully regulated utility in its regions.",
+    "financial_scale_growth_profile": "For 2021, NiSource reported operating revenues of $4.9 billion and net income available to common shareholders of $529.8 million. The company is investing approximately $10 billion in capital projects from 2021-2024, with a focus on infrastructure and renewable energy, and maintains investment-grade credit ratings.",
+    "value_proposition_product_differentiation": "NiSource emphasizes safe, reliable, and affordable energy delivery, supported by significant investments in infrastructure modernization and a transition to cleaner energy sources. Its regulated utility model provides stable returns, and its customer-centric approach, focus on safety, and commitment to sustainability differentiate it in the utility sector."
+  }
+}

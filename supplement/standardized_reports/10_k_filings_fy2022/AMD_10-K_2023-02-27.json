@@ -1,0 +1,18 @@
+{
+  "symbol": "AMD",
+  "form_type": "10-K",
+  "filing_date": "2023-02-27",
+  "source_file": "AMD_10-K_2023-02-27.pdf",
+  "categories": {
+    "main_business_segments": "AMD operates four main business segments: Data Center (server CPUs, GPUs, DPUs, FPGAs, Adaptive SoCs for data centers), Client (CPUs, APUs, and chipsets for desktop and notebook PCs), Gaming (discrete GPUs, semi-custom SoCs for consoles, and development services), and Embedded (embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoCs for specialized markets).",
+    "core_technologies_production_methods": "AMD's core technologies include high-performance x86 CPUs (Zen architecture), GPUs (RDNA and CDNA architectures), APUs (integrated CPU/GPU), FPGAs, Adaptive SoCs, and DPUs. The company relies on advanced semiconductor manufacturing, primarily through third-party foundries like TSMC, and leverages advanced packaging, chiplet designs, and proprietary interconnects such as Infinity Fabric.",
+    "primary_customers_markets": "AMD serves OEMs, ODMs, cloud service providers, system integrators, independent distributors, and add-in-board manufacturers. Key end markets include data centers, PCs (consumer and commercial), gaming consoles, embedded/industrial applications, and professional workstations.",
+    "geographic_coverage": "AMD is a global company with significant operations and sales in the United States, China (including Hong Kong), Japan, Europe, Taiwan, and Singapore. In 2022, 66% of net revenue was from international sales, with major facilities and R&D centers in North America, Asia, and Europe.",
+    "supply_chain_position": "AMD is a fabless semiconductor company, operating primarily at the design and product development stage (upstream/midstream), while relying on third-party foundries for wafer fabrication and external partners for assembly, test, and packaging (downstream).",
+    "strategic_focus_rd_direction": "AMD's strategy centers on high-performance and adaptive computing leadership, expanding data center presence, enabling pervasive AI, and custom silicon solutions. R&D priorities include next-generation CPUs, GPUs, FPGAs, DPUs, advanced packaging, AI acceleration, and software platforms, with significant investment in innovation and ecosystem partnerships.",
+    "revenue_model": "AMD generates revenue primarily through product sales (CPUs, GPUs, APUs, FPGAs, SoCs, chipsets), semi-custom development services, and, to a lesser extent, IP licensing and royalties. Sales are made directly to OEMs/ODMs, through distributors, and via channel partners.",
+    "key_competitors_industry_positioning": "AMD's main competitors are Intel (CPUs, FPGAs, integrated graphics), NVIDIA (GPUs, DPUs, AI/data center), and various ARM-based chip providers. AMD is a leading challenger in CPUs and GPUs, holds a strong position in gaming consoles, and expanded its portfolio and market reach with the Xilinx and Pensando acquisitions.",
+    "financial_scale_growth_profile": "In 2022, AMD reported net revenue of $23.6 billion (up 44% from 2021), with strong growth in Data Center, Gaming, and Embedded segments, partially offset by a decline in Client segment revenue. The company had $5.9 billion in cash and short-term investments, $2.5 billion in debt, and approximately 25,000 employees worldwide.",
+    "value_proposition_product_differentiation": "AMD emphasizes leadership in high-performance, energy-efficient, and adaptive computing solutions, offering a broad portfolio spanning CPUs, GPUs, FPGAs, and custom SoCs. Its differentiation lies in advanced architectures, chiplet designs, strong price/performance, and the ability to deliver tailored solutions for diverse markets, including data center, gaming, and embedded applications."
+  }
+}

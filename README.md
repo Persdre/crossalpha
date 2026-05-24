@@ -118,12 +118,14 @@ crossalpha/
     │   ├── category_ablation_multi_target_12mo.json # schema ablation
     │   └── rq3_event_results.json               # RQ3 (event strategy)
     ├── metadata/                        # SymbolDict.csv, DataDict.csv
-    ├── standardized_reports/            # ten-category JSON text, all 5 markets
-    │   ├── 10_k_filings/                #   US  (881)
-    │   ├── securities_reports/          #   JP  (1,523)
+    ├── standardized_reports/            # ten-category JSON text, all 5 markets (FY2022–2024)
+    │   ├── 10_k_filings/                #   US  FY2024 (767)
+    │   ├── 10_k_filings_fy2022/         #   US  FY2022 vintage (863)
+    │   ├── 10_k_filings_fy2023/         #   US  FY2023 vintage (671)
+    │   ├── securities_reports/          #   JP  (1,372)
     │   ├── securities_reports_tw/       #   TW  (1,040)
     │   ├── securities_reports_kr/       #   KR  (612)
-    │   └── securities_reports_hk/       #   HK  (602)
+    │   └── securities_reports_hk/       #   HK  (572)
     └── DATA_MANIFEST.md                 # full-release layout
 ```
 
@@ -186,9 +188,13 @@ re-running anything.
 ## Data Availability
 
 This anonymous review package ships the **standardized ten-category JSON text
-for all five markets** (US, JP, TW, KR, HK; ~4,700 firm-filings under
+for all five markets** (US, JP, TW, KR, HK; ~5,900 firm-filings under
 `supplement/standardized_reports/`), the result summaries, and the metadata
 dictionaries — enough to inspect the inputs and verify the reported numbers.
+The US filings are released as three fiscal-year vintages (FY2022–2024); the
+other four markets ship the FY2024 vintage used by the cross-market evaluation.
+Reports are organised by filing-year cohort, so for firms with non-December
+fiscal years the cohort label may lead the fiscal year by one period.
 The raw filing PDFs/HTML, PCA-whitened embedding matrices,
 directed similarity matrices, typed economic-linkage edges, and the complete
 daily OHLCV panel are large and will be released through public dataset hosting
