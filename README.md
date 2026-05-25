@@ -45,7 +45,6 @@ environment; no keys are stored in the repo.
 ```text
 crossalpha/
 ├── requirements.txt
-├── ANONYMIZATION_CHECKLIST.md
 ├── scripts/
 │   │  # — construction pipeline (stages 1–5) —
 │   ├── parse_10k.py                         # 1. US filings → ten-category schema (LLM)
@@ -169,8 +168,3 @@ The raw filing PDFs/HTML, PCA-whitened embedding matrices, directed similarity m
 and the complete daily OHLCV panel are large and will be
 released through public dataset hosting with an archival DOI after review. See
 `supplement/DATA_MANIFEST.md` for the full-release layout.
-
-## Anonymity Note
-
-This repository intentionally contains no author names, affiliations, local machine paths,
-personal repository links, or project-account URLs. See `ANONYMIZATION_CHECKLIST.md`.
