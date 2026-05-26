@@ -11,7 +11,7 @@ results so cross-market peer-momentum factors can be compared under a common pro
 is the anonymized supplement for a double-blind submission.
 
 <p align="center">
-  <img src="figures/crossalpha_overview.png" alt="CrossAlpha Overview" width="100%">
+  <img src="figures/crossalpha_overview_updated.png" alt="CrossAlpha Overview" width="100%">
 </p>
 
 | | |
