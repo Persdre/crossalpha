@@ -1,12 +1,12 @@
-# CrossAlpha: A Cross-Market Annual Report Benchmark for Global Equity Factor Research
+# CrossAlpha: An Annual-Report Benchmark for Cross-Market Factor Research
 
 **Official code and data for the CrossAlpha benchmark.**
 
-This repository contains the official implementation of **CrossAlpha**, a cross-market
-annual-report benchmark for global equity factor research. It standardizes annual reports
-from five equity markets into a fixed ten-category business schema, builds cross-market
-peer-similarity graphs from the resulting firm-level text embeddings, and aligns those
-graphs with daily price data — then ships fixed evaluation entry points and reference
+This repository contains the official implementation of **CrossAlpha**, a public
+annual-report benchmark for cross-market factor research. It standardizes annual reports
+from five equity markets into a fixed ten-category business schema, builds a dense directed
+cross-market peer-similarity graph from the resulting firm-level text embeddings, and aligns
+that graph with daily price data — then ships fixed evaluation entry points and reference
 results so cross-market peer-momentum factors can be compared under a common protocol. It
 is the anonymized supplement for a double-blind submission.
 
@@ -16,10 +16,10 @@ is the anonymized supplement for a double-blind submission.
 
 | | |
 |---|---|
-| Markets | US (Russell 1000), Japan (TOPIX 500), Taiwan (TWSE), Korea (KOSPI), Hong Kong (main board) |
-| Coverage | ~3,600 companies, ~10,700 firm-years |
-| Price panel | 11 years of daily OHLCV (January 2015 – December 2025) |
-| Similarity graph | ~19M-edge dense cross-market graph from PCA-whitened embeddings |
+| Markets | US (Russell 1000), Japan (TOPIX 500), Taiwan (TWSE), South Korea (KOSPI), Hong Kong (main board) |
+| Coverage | ~3,587 firms, ~10,700 firm-years |
+| Price panel | 11 years of daily OHLCV (January 2015 – May 2026) |
+| Similarity graph | ~19M directed cross-market firm-pair scores from PCA-whitened embeddings |
 
 ## Installation
 
@@ -119,26 +119,27 @@ python scripts/run_us_ema_mr_to_jp_mvp.py     # US→JP factor variant
 
 ## Evaluation
 
-Each entry point runs off the cached similarity graph and the shipped results. Override
-the lookback or source/target arguments via `argparse` flags.
+The benchmark is organized around three research questions, mirroring the paper. Each
+entry point runs off the cached similarity graph and the shipped results; override the
+lookback or source/target arguments via `argparse` flags.
 
 ```bash
+# RQ1 — do cross-market text peers beat single-market and non-text peers?
 # US→JP peer-definition comparison (text vs GICS / return-corr / domestic)
 python scripts/run_baselines_monthly.py --lookback 12
 
+# RQ2 — where should source peers come from? (directed information geography)
 # raw US→target generalization across the four Asian targets
 python scripts/run_paper_multi_market_monthly.py
-
 # 5×5 cross- vs same-market matrix (per-source-target factor)
 python scripts/run_cross_vs_same_market_matrix.py
-
 # best single source vs pooled sources per target
 python scripts/run_pooled_similarity_mild.py
-
 # ten-category business-schema ablation
 python scripts/run_category_ablation_multi_target.py
 
-# event-conditioned daily basket evaluation
+# RQ3 — does the same graph support event-conditioned daily spillover prediction?
+# event-conditioned daily basket evaluation (with optional GPT-5 agent filter)
 python scripts/run_rq3_mild_rerun.py
 ```
 
@@ -155,16 +156,8 @@ numbers, so the tables and figures can be inspected without re-running anything.
 | 4 | Similarity graph | `cache_similarity.py` | weighted cross-category cosine similarity → per-row percentile-rank matrices |
 | 5 | Factor | `run_graph_monthly.py` | the monthly cross-market peer-momentum factor |
 
-## Data Availability
+## License
 
-This anonymous review package ships the **standardized ten-category JSON text for all five
-markets** (US, JP, TW, KR, HK; ~5,900 firm-filings under `supplement/standardized_reports/`),
-the result summaries, and the metadata dictionaries. The US filings are released as three
-fiscal-year vintages (FY2022–2024); the other four markets ship the FY2024 vintage used by
-the cross-market evaluation. Reports are organized by filing-year cohort, so for firms with
-non-December fiscal years the cohort label may lead the fiscal year by one period.
+This dataset and code are released under the MIT License.
 
-The raw filing PDFs/HTML, PCA-whitened embedding matrices, directed similarity matrices,
-and the complete daily OHLCV panel are large and will be
-released through public dataset hosting with an archival DOI after review. See
-`supplement/DATA_MANIFEST.md` for the full-release layout.
+

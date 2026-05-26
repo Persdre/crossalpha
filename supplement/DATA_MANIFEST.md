@@ -16,11 +16,17 @@ The anonymous review package includes the standardized text, metadata, and resul
 
 | Directory | Market | Source filing | Files |
 |---|---|---|---|
-| `10_k_filings/` | US (Russell 1000) | 10-K / 20-F | 881 |
-| `securities_reports/` | Japan (TOPIX 500) | Securities Report | 1,523 |
-| `securities_reports_tw/` | Taiwan (TWSE) | Annual Report | 1,040 |
-| `securities_reports_kr/` | Korea (KOSPI) | Business Report | 612 |
-| `securities_reports_hk/` | Hong Kong (main board) | Annual Report | 602 |
+| `10_k_filings/` | US (Russell 1000), FY2024 | 10-K / 20-F | 767 |
+| `10_k_filings_fy2022/` | US (Russell 1000), FY2022 | 10-K / 20-F | 863 |
+| `10_k_filings_fy2023/` | US (Russell 1000), FY2023 | 10-K / 20-F | 671 |
+| `securities_reports/` | Japan (TOPIX 500), FY2024 | Securities Report | 1,372 |
+| `securities_reports_tw/` | Taiwan (TWSE), FY2024 | Annual Report | 1,040 |
+| `securities_reports_kr/` | South Korea (KOSPI), FY2024 | Business Report | 612 |
+| `securities_reports_hk/` | Hong Kong (main board), FY2024 | Annual Report | 572 |
+
+The US filings ship three fiscal-year vintages (FY2022–2024); the other four markets ship
+the FY2024 vintage used by the cross-market evaluation. Total: 5,897 standardized firm-filing
+JSON files.
 
 Each JSON has `symbol`, `form_type`, `filing_date`, `source_file`, and a `categories` object with the ten business-description fields.
 
