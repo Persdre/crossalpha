@@ -10,9 +10,14 @@ The full CrossAlpha release contains:
 - Monthly and event-conditioned evaluation outputs.
 - Metadata dictionaries for ticker, market, sector, and filing year.
 
-The anonymous review package includes the standardized text, metadata, and result summaries. The remaining large artifacts (raw PDF/HTML, embedding/similarity matrices, daily OHLCV) are released after review through a public dataset host and an archival DOI.
+This repository ships the standardized text, metadata, and result summaries. The large artifacts (embedding/similarity matrices and the daily OHLCV panel) are hosted on a public dataset host with an archival DOI:
 
-`standardized_reports/` holds the compact ten-category JSON text for **all five markets**, one file per firm-filing, so reviewers can inspect the model inputs and audit the schema without downloading the raw PDF/HTML corpus. Directory-to-market mapping:
+- Dataset host: **TODO — add link**
+- Archival DOI: **TODO — add DOI**
+
+Raw PDF/HTML filings are not redistributed; they can be re-collected with the `ar_scraper/` toolkit.
+
+`standardized_reports/` holds the compact ten-category JSON text for **all five markets**, one file per firm-filing, so the model inputs and the schema can be inspected without the raw corpus. Directory-to-market mapping:
 
 | Directory | Market | Source filing | Files |
 |---|---|---|---|

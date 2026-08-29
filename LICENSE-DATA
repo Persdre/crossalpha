@@ -1,0 +1,15 @@
+The CrossAlpha data release (standardized ten-category annual-report text,
+metadata dictionaries, PCA-whitened embeddings, cross-market similarity
+graph, and benchmark result files) is licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0).
+
+You are free to share and adapt the material for any purpose, including
+commercially, provided that you give appropriate credit (see the citation in
+README.md), provide a link to the license, and indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+The standardized text consists of LLM-generated summaries derived from public
+corporate filings; the underlying filings remain the property of their
+issuers and are not redistributed here. Daily price data are obtained from
+Yahoo Finance and are subject to Yahoo's terms of use.

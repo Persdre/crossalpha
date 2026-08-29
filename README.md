@@ -7,8 +7,10 @@ annual-report benchmark for cross-market factor research. It standardizes annual
 from five equity markets into a fixed ten-category business schema, builds a dense directed
 cross-market peer-similarity graph from the resulting firm-level text embeddings, and aligns
 that graph with daily price data — then ships fixed evaluation entry points and reference
-results so cross-market peer-momentum factors can be compared under a common protocol. It
-is the anonymized supplement for a double-blind submission.
+results so cross-market peer-momentum factors can be compared under a common protocol.
+
+**Paper:** *CrossAlpha: An Annual-Report Benchmark for Cross-Market Factor Research (with LLM Agents)*,
+Findings of EMNLP 2026. See [Citation](#citation).
 
 <p align="center">
   <img src="figures/crossalpha_overview_new.png" alt="CrossAlpha Overview" width="100%">
@@ -86,7 +88,11 @@ crossalpha/
 ## Data Preparation
 
 The construction pipeline runs in order; each stage produces an artifact consumed by the
-next. Stages 1–4 need the raw corpus and LLM API keys (released after review).
+next. Stages 1–4 rebuild the benchmark from raw filings and therefore need the raw corpus
+(collected with `ar_scraper/`) and LLM API keys. Reproducing the released benchmark and the
+reported evaluations does not require any API call: the standardized text, metadata, and
+result JSONs are in `supplement/`, and the large artifacts (embeddings, similarity graph,
+daily OHLCV) are hosted separately; see `supplement/DATA_MANIFEST.md`.
 
 ```bash
 python scripts/parse_10k.py                   # 1. filings → ten-category schema (LLM)
@@ -139,7 +145,7 @@ python scripts/run_pooled_similarity_mild.py
 python scripts/run_category_ablation_multi_target.py
 
 # RQ3 — does the same graph support event-conditioned daily spillover prediction?
-# event-conditioned daily basket evaluation (with optional GPT-5 agent filter)
+# event-conditioned daily basket evaluation (with optional GPT-5 LLM filter)
 python scripts/run_rq3_mild_rerun.py
 ```
 
@@ -156,8 +162,41 @@ numbers, so the tables and figures can be inspected without re-running anything.
 | 4 | Similarity graph | `cache_similarity.py` | weighted cross-category cosine similarity → per-row percentile-rank matrices |
 | 5 | Factor | `run_graph_monthly.py` | the monthly cross-market peer-momentum factor |
 
+## What is released where
+
+| Artifact | Location |
+|---|---|
+| Standardized ten-category text, all five markets (US: FY2022–FY2024 vintages) | `supplement/standardized_reports/` |
+| Metadata dictionaries (symbols, markets, sectors; price-field dictionary) | `supplement/metadata/` |
+| JSON outputs behind the paper tables and figures | `supplement/results/` |
+| Distiller and Linker prompts | `scripts/parse_10k.py`, `scripts/parse_reports_claude.py`, `scripts/run_supply_chain_extraction.py` |
+| Construction, factor, and evaluation code | `scripts/` |
+| Annual-report scraper toolkit | `ar_scraper/` |
+| PCA-whitened embeddings, ~19M-edge similarity graph, daily OHLCV panel | external dataset host (link in `supplement/DATA_MANIFEST.md`) |
+
+## Citation
+
+```bibtex
+@inproceedings{wang2026crossalpha,
+  title     = {CrossAlpha: An Annual-Report Benchmark for Cross-Market Factor Research (with LLM Agents)},
+  author    = {Wang, Qian and Tong, Zhongyi and Chen, Nuo and Wu, Zhaomin and He, Bingsheng},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
+  year      = {2026}
+}
+```
+
 ## License
 
-This dataset and code are released under the MIT License.
+Code is released under the [MIT License](LICENSE). The released data (standardized text,
+metadata, embeddings, similarity graph, and result files) is released under
+[CC BY 4.0](LICENSE-DATA). Annual reports remain the property of their issuers; this
+repository redistributes LLM-generated ten-category summaries, not the raw filings.
+Daily prices are obtained from Yahoo Finance and are subject to its terms of use.
+
+## Disclaimer
+
+All returns, IC/ICIR, Sharpe, and drawdown figures are historical academic measurements of
+signal quality. They are not investment advice, guarantees of future performance, or
+recommendations to trade any security.
 
 
